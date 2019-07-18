@@ -78,6 +78,7 @@ function mouseOut() {
 
 }
 function enableButton() {
+      this.clicked = false;
       let notValidObj = this.state.notValid;
 
       notValidObj.valid = true;
@@ -109,12 +110,13 @@ function clicked() {
         this.props.dispatch(addComment(this.form, this.props.userID))
     }
 
+    disableButton.bind(this)();
 }
 
 
 
 function disableButton() {
-    if(!this.mouseOver) {
+    if(!this.mouseOver || this.clicked) {
       let notValidObj = this.state.notValid;
 
       notValidObj.valid = false;
