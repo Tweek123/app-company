@@ -17,7 +17,7 @@ class formMessage  extends React.Component {
         notValid.phone1 = false;
         notValid.phone2 = false;
         notValid.phone = false;
-        notValid.valid = false;
+        notValid.valid = true;
 
         this.clicked = false;
         this.state = {notValid: notValid};
