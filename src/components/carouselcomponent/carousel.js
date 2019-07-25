@@ -16,11 +16,9 @@ constructor(props) {
     
     else if(window.innerWidth <= 1200) {
       this.state ={
-        renderType: 'SLIDER_3'
+        renderType: 'SLIDER_2'
       }
-      }
-    
-    
+    }
     
     else if(window.innerWidth <= 1400) {
       this.state ={
@@ -28,15 +26,13 @@ constructor(props) {
       }
     }
       
-      else {
-        this.state ={
-          renderType: 'SLIDER_4'
-        }
+    else {
+      this.state ={
+        renderType: 'SLIDER_4'
       }
+    }
 
-
-    this.updateDimensions = this.updateDimensions.bind(this); 
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener("resize", () => this.updateDimensions());
 }
 
   updateDimensions() {
@@ -45,7 +41,9 @@ constructor(props) {
       this.setState({
         renderType: 'SLIDER_1'
       })
-    }else if(window.innerWidth <= 1200) {
+    }
+
+    else if(window.innerWidth <= 1200) {
       this.setState({
         renderType: 'SLIDER_2'
       }) 
@@ -57,31 +55,23 @@ constructor(props) {
         }) 
       }
       
-      else {
+    else {
         this.setState({
           renderType: 'SLIDER_4'
         })
       }
     }
 
-  render() {
-    const settings4 = {
-      dots: true,
-      infinite: true,
-      speed: 1000,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      centerMode: true
-    };
 
-    const settings3= {
+    
+
+  render() {
+
+    const settings1= {
       dots: true,
       infinite: true,
       speed: 1000,
-      slidesToShow: 3,
+      slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
       autoplay: true,
@@ -101,11 +91,11 @@ constructor(props) {
       centerMode: true
     };
 
-    const settings1= {
+    const settings3= {
       dots: true,
       infinite: true,
       speed: 1000,
-      slidesToShow: 1,
+      slidesToShow: 3,
       slidesToScroll: 1,
       arrows: false,
       autoplay: true,
@@ -113,7 +103,19 @@ constructor(props) {
       centerMode: true
     };
 
-    let carouselUsers = [];
+    const settings4 = {
+      dots: true,
+      infinite: true,
+      speed: 1000,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      centerMode: true
+    };
+
+    const carouselUsers = [];
 
     this.users.forEach(user => {
         carouselUsers.push(  
@@ -126,13 +128,9 @@ constructor(props) {
               return (
                 <div style={{width: "90%", margin: "auto"}}>
                   {
-                  
-                  
-                  <Slider {...settings4}>
-                      {carouselUsers}
-                  </Slider>
-
-                  
+                    <Slider {...settings4}>
+                        {carouselUsers}
+                    </Slider>
                   }
                 </div>
              )
@@ -141,46 +139,34 @@ constructor(props) {
                 return (
                   <div style={{width: "90%", margin: "auto"}}>
                     {
-                    
-                    
-                    <Slider {...settings3}>
-                        {carouselUsers}
-                    </Slider>
-  
-                    
+                      <Slider {...settings3}>
+                          {carouselUsers}
+                      </Slider>
                     }
                   </div>
-               )
+              )
 
                case "SLIDER_2":
                   return (
                     <div style={{width: "90%", margin: "auto"}}>
                       {
-                      
-                      
-                      <Slider {...settings2}>
-                          {carouselUsers}
-                      </Slider>
-    
-                      
+                        <Slider {...settings2}>
+                            {carouselUsers}
+                        </Slider>
                       }
                     </div>
-                 )
+              )
                case "SLIDER_1":
                   return (
                     <div style={{width: "90%", margin: "auto"}}>
                       {
-                      
-                      
-                      <Slider {...settings1}>
-                          {carouselUsers}
-                      </Slider>
-    
-                      
+                        <Slider {...settings1}>
+                            {carouselUsers}
+                        </Slider>
                       }
                     </div>
-                 )
+              )
         
-            }
+      }
   }
 }

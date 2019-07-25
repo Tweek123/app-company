@@ -27,8 +27,8 @@
     word-wrap: break-word;
   }
   .messages .phonenumber {
-    margin-left: auto; 
-    font-size: 20px;
+    float: right; 
+    font-size: 17px;
   }
   .messages .row {
     display: flex; 
@@ -100,6 +100,21 @@
     padding-bottom: 30px;
   }
   
+  .message100-text-wrapper {
+    width: 50%;
+    text-align: center;
+  }
   
+  @media (max-width: 600px) {
+    .card {
+      margin: 50px 10px;
+    }
   
-  
+    .message100-form-title {
+      font-size: 20px;
+    }
+    .messages .phonenumber {
+      float: right; 
+      font-size: 15px;
+    } 
+  }

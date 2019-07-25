@@ -22,12 +22,6 @@ function userPage() {
 }
 
 
-const initialState = {
-  users: []
-};
-
-
-
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_USER":  
@@ -60,11 +54,13 @@ function reducer(state = initialState, action) {
 
       return { ...state, users: [...state.users]};
 
-      case "GET_USERS":     
+      case "GET_USERS":   
+      console.log("state.users");  
       return { ...state, users: [...state.users]};
 
       case "REF_USERS":
-
+      console.log("state.users");
+      console.log(state.users);
       state.users = [...action.data];
        
       return { ...state, users: [...state.users]};  

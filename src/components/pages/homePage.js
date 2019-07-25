@@ -1,46 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import User from '../usercomponent/user'
 import { connect } from 'react-redux';
-import { addUser } from "../../actions/actions";
 import FormGenerateUser from '../forms/formGenerateUser'
-
+import { getUsers } from '../../actions/actions'
 class HomePage extends React.Component {
     constructor(props) {
         super(props)
-     
+    }
+
+    componentWillMount() {
+        this.props.dispatch(getUsers())
     }
 
     render()  {
-    
-        let renderUsers = [];
+        
+        const renderUsers = [];
 
         this.props.users.forEach(user => {
-            renderUsers.push(<User user={user} renderType="HOME_RENDER"/>)
+            user.renderType = "HOME_RENDER";
+            renderUsers.push(<User user={user}/>)
         });
 
         return <div className='row'>
-        {renderUsers}
-        <FormGenerateUser/>
-        </div>
-        
+                    {renderUsers}
+                    <FormGenerateUser/>
+                </div>
       }
 }
 
 
 const mapStateToProps = (state) => {
-
-    state.reducer.users.forEach(user => {
-        user.renderType = "HOME_RENDER";
-     });
-
     return {
-    users: state.reducer.users,
-     
+        users: state.reducer.users,
     };
+
   };
-
-
 
   export default connect(mapStateToProps)(HomePage);
 

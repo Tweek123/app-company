@@ -10,13 +10,10 @@ export function* watchGetUsers() {
   yield takeEvery('GET_USERS', fetchGetAsync);
 }
 
-
-
-
 function* fetchGetAsync() {
   try {
     const data = yield call(() => {
-      return fetch('https://k7y75.mocklab.io/json/users')
+      return fetch('https://api.myjson.com/bins/smegx')
               .then(res => res.json())
       }
     );
